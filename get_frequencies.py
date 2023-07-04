@@ -44,4 +44,4 @@ if __name__ == "__main__":
     frequencies = frequencies.melt(var_name="corpus",value_name="frequency", ignore_index=False)
     frequencies.sort_values(["corpus"], inplace=True)
     frequencies.sort_index(inplace=True)
-    frequencies.to_csv("data/processed/frequencies.csv", index_label="word")
+    frequencies.to_excel("data/processed/frequencies.xlsx", index_label="word")

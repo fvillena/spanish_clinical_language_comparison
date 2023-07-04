@@ -12,4 +12,4 @@ if __name__ == "__main__":
     data = pd.DataFrame(mentions, columns = ["code","corpus","text"])
     data["text"] = data.text.str.lower().apply(unidecode)
     data.sort_values(["code","corpus"], inplace=True)
-    data.to_csv("data/processed/mentions.csv", index=False)
+    data.to_excel("data/processed/mentions.xlsx", index=False)
