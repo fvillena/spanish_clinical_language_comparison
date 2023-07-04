@@ -1,3 +1,5 @@
+#! /usr/local/python/current/bin/python
+
 import dask.dataframe as dd
 
 unigrams = dd.read_csv("data/raw/google-unigrams/*.gz",

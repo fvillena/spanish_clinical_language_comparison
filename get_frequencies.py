@@ -1,3 +1,5 @@
+#! /usr/local/python/current/bin/python
+
 from nltk.tokenize import word_tokenize
 from src import Corpus
 from pathlib import Path

@@ -1,3 +1,5 @@
+#! /usr/local/python/current/bin/python
+
 from src import Corpus
 from unidecode import unidecode
 import pandas as pd
