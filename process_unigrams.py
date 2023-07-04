@@ -9,4 +9,4 @@ unigrams = dd.read_csv("data/raw/google-unigrams/*.gz",
                        compression='gzip', blocksize=None)
 
 result = unigrams.groupby(["unigram"]).frequency.sum().compute()
-result.to_json("data/processed/unigrams.json")
+result.to_json("data/interim/unigrams.json")

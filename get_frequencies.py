@@ -27,7 +27,7 @@ if __name__ == "__main__":
                 vocabulary[word].update([corpus])
             else:
                 vocabulary[word] = Counter([corpus])
-    with open('data/processed/unigrams.json') as f:
+    with open('data/interim/unigrams.json') as f:
         unigram_frequency = json.load(f)
     unigram_frequency_processed = {}
     for word,frequency in unigram_frequency.items():
