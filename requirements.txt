@@ -1,0 +1,4 @@
+unidecode
+nltk
+google-ngram-downloader
+python -m pip install dask[dataframe]
