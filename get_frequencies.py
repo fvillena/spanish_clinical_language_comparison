@@ -11,7 +11,8 @@ import json
 if __name__ == "__main__":
     abstracts = Corpus(Path("data/raw/abstracts"))
     eudract = Corpus(Path("data/raw/eudract"))
-    mentions = abstracts.mentions + eudract.mentions
+    cwlsc = Corpus(Path("data/raw/cwlsc"))
+    mentions = abstracts.mentions + eudract.mentions + cwlsc.mentions
     vocabulary = {}
     for mention in mentions:
         try:

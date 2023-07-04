@@ -8,7 +8,8 @@ from pathlib import Path
 if __name__ == "__main__":
     abstracts = Corpus(Path("data/raw/abstracts"))
     eudract = Corpus(Path("data/raw/eudract"))
-    mentions = abstracts.mentions + eudract.mentions
+    cwlsc = Corpus(Path("data/raw/cwlsc"))
+    mentions = abstracts.mentions + eudract.mentions + cwlsc.mentions
     data = pd.DataFrame(mentions, columns = ["code","corpus","text"])
     data["text"] = data.text.str.lower().apply(unidecode)
     data = data.groupby(["code","corpus","text"]).size().reset_index().rename(columns={0:"frequency"})
