@@ -5,8 +5,8 @@ from src import Corpus
 from pathlib import Path
 from collections import Counter
 import pandas as pd
-from unidecode import unidecode
 import json
+from src import preprocess
 
 if __name__ == "__main__":
     abstracts = Corpus(Path("data/raw/abstracts"))
@@ -23,7 +23,7 @@ if __name__ == "__main__":
             tokenized_mention = word_tokenize(mention[2])
         corpus = mention[1]
         for word in tokenized_mention:
-            word = unidecode(word.lower())
+            word = preprocess(word)
             if word in vocabulary:
                 vocabulary[word].update([corpus])
             else:

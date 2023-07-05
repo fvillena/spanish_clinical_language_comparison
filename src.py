@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import List, Optional
 from pathlib import Path
 import re
+from unidecode import unidecode
 
 @dataclass
 class Mention():
@@ -46,3 +47,6 @@ class Corpus():
                 if m.codes:
                     for code in m.codes:
                         self.mentions.append((code,self.name,m.text))
+
+def preprocess(word):
+    return unidecode(word.lower())
