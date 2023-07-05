@@ -36,9 +36,12 @@ if __name__ == "__main__":
             unigram_frequency_processed[word] + frequency
         else:
             unigram_frequency_processed[word] = frequency
+    with open('data/interim/umls_unigrams.json') as f:
+        umls_unigram_frequency = json.load(f)
     for word,counter in vocabulary.items():
         try:
             counter.update(google = unigram_frequency_processed[word])
+            counter.update(umls = umls_unigram_frequency[word])
         except:
             continue
     frequencies = pd.DataFrame.from_dict(vocabulary, orient="index").fillna(0)
