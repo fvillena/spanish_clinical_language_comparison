@@ -34,10 +34,22 @@ class Ann():
                         print(f"Error in line: {line}")
     def __repr__(self):
         return self.name
+
+class Txt():
+    def __init__(self, txt_path: Path):
+        self.name = txt_path.stem
+        self.corpus = None
+        with open(txt_path, encoding="UTF-8") as f:
+            self.text = f.read()
+    def __repr__(self):
+        return self.name
+    def __str__(self):
+        return self.text
     
 class Corpus():
     def __init__(self, corpus_path: Path):
         self.anns = []
+        self.txts = []
         self.mentions = []
         self.name = corpus_path.stem
         for ann_path in corpus_path.glob("*.ann"):
@@ -47,6 +59,10 @@ class Corpus():
                 if m.codes:
                     for code in m.codes:
                         self.mentions.append((code,self.name,m.text))
+        for txt_path in corpus_path.glob("*.txt"):
+            txt = Txt(txt_path)
+            txt.corpus = self.name
+            self.txts.append(txt)
 
 def preprocess(word):
     return unidecode(word.lower())
