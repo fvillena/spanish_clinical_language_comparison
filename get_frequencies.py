@@ -12,17 +12,17 @@ if __name__ == "__main__":
     abstracts = Corpus(Path("data/raw/abstracts"))
     eudract = Corpus(Path("data/raw/eudract"))
     cwlsc = Corpus(Path("data/raw/cwlsc"))
-    mentions = abstracts.mentions + eudract.mentions + cwlsc.mentions
+    texts = abstracts.txts + eudract.txts + cwlsc.txts
     vocabulary = {}
-    for mention in mentions:
+    for text in texts:
         try:
-            tokenized_mention = word_tokenize(mention[2])
+            tokens = word_tokenize(str(text))
         except LookupError:
             import nltk
             nltk.download('punkt')
-            tokenized_mention = word_tokenize(mention[2])
-        corpus = mention[1]
-        for word in tokenized_mention:
+            tokens = word_tokenize(str(text))
+        corpus = text.corpus
+        for word in tokens:
             word = preprocess(word)
             if word in vocabulary:
                 vocabulary[word].update([corpus])
